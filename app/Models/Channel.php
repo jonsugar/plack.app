@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\CarbonInterface;
 use Database\Factories\ChannelFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,8 @@ use NunoMaduro\LaravelSluggable\Attributes\Sluggable;
  * @property-read string $slug
  * @property-read CarbonInterface $created_at
  * @property-read CarbonInterface $updated_at
+ * @property-read Workspace $workspace
+ * @property-read Collection<int, Message> $messages
  */
 #[Sluggable(from: 'name', scope: 'workspace_id', onUpdating: true)]
 final class Channel extends Model

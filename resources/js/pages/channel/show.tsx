@@ -1,4 +1,5 @@
-import { Form, Head } from '@inertiajs/react';
+import { Form, Head, router } from '@inertiajs/react';
+import { useEcho } from '@laravel/echo-react';
 import MessageController from '@/actions/App/Http/Controllers/MessageController';
 import CreateChannelDialog from '@/components/create-channel-dialog';
 import DeleteChannelDialog from '@/components/delete-channel-dialog';
@@ -65,6 +66,10 @@ export default function ChannelShow({
     workspaces?: WorkspaceSummary[];
     canManage?: boolean;
 }) {
+    useEcho(`channels.${channel.id}`, 'MessageCreated', () => {
+        router.reload({ only: ['messages'] });
+    });
+
     return (
         <WorkspaceLayout
             workspace={workspace}

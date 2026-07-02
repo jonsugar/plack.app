@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\AcceptWorkspaceInvitationController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\DeclineWorkspaceInvitationController;
@@ -23,27 +22,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', fn () => Inertia::render('welcome'))->name('home');
-
-Route::get('queue', function (): void {
-    dispatch(function (): void {
-        info('queued and processed.');
-    });
-});
-
-Route::get('queue-mail', function (): void {
-
-    Mail::raw('This is a test email sync.', function ($message): void {
-        $message->to('enunomaduro@gmail.com')
-            ->subject('Test Email sync');
-    });
-
-    dispatch(function (): void {
-        Mail::raw('This is a test email async.', function ($message): void {
-            $message->to('enunomaduro@gmail.com')
-                ->subject('Test Email Async');
-        });
-    });
-});
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
     // Workspaces...
