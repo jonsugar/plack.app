@@ -63,7 +63,6 @@ return RectorConfig::configure()
         deadCode: true,
         codeQuality: true,
         typeDeclarations: true,
-        privatization: true,
         earlyReturn: true,
         codingStyle: true,
     )

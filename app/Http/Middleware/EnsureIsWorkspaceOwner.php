@@ -9,7 +9,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final readonly class EnsureCanAccessWorkspace
+final readonly class EnsureIsWorkspaceOwner
 {
     /**
      * @param  Closure(Request): (Response)  $next

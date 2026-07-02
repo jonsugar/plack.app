@@ -6,8 +6,8 @@ namespace App\Http\Requests;
 
 use App\Models\Workspace;
 use Illuminate\Container\Attributes\RouteParameter;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class DeleteChannelRequest extends FormRequest

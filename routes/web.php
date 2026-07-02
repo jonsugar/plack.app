@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
     });
 
     // Only owners may manage a workspace, its channels, members and invitations...
-    Route::middleware(['workspace.access'])->group(function (): void {
+    Route::middleware(['workspace.owner'])->group(function (): void {
         Route::get('workspaces/{workspace}/settings', WorkspaceSettingsController::class)
             ->name('workspace.settings');
 
